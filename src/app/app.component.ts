@@ -1,24 +1,40 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { PanelMenuModule } from 'primeng/panelmenu';
+import { Component, effect } from '@angular/core';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { MenubarModule } from 'primeng/menubar';
 import { ButtonModule } from 'primeng/button';
-
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,PanelMenuModule,ButtonModule ],
+  imports: [RouterOutlet,RouterLink,MenubarModule,ButtonModule ],
   
   template: `
     <h1>Welcome to {{title}}!</h1>
     <router-outlet></router-outlet>
     <router-outlet />
-    <p-button label="Toggle All" [text]="true" (onClick)="toggleAll()" />
-<p-panelmenu [model]="items" styleClass="w-full md:w-80" />
+    <!-- <p-toast /> -->
+    <p-menubar [model]="items" />
+    <a routerLink="/about-us"></a>
   `,
   styles: [],
 })
 export class AppComponent {
-  items = [];
+  items: MenuItem[] | undefined;
+ 
+  constructor(){
+      this.items = [{
+        label: 'Home',
+        icon: 'pi pi-home'
+    },{
+      label: 'About Us',
+      icon: 'pi pi-star',
+        
+    }]; 
+
+
+    effect(()=>{console.log(this.items)});
+  }
+  
   toggleAll(){
     // items = [name];
 
