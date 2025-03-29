@@ -20,6 +20,11 @@ export const routes: Routes = [
             loadComponent: () =>
                 import('./gallery/gallery.component').then((m) => m.GalleryComponent),
         },
+        {
+            path: 'not-found',
+            loadComponent: () =>
+                import('./not-found/not-found.component').then((m) => m.NotFoundComponent),
+        },
     
     ]
     },
@@ -32,7 +37,7 @@ export const routes: Routes = [
     },
     {
         path: '**',
-        redirectTo: 'home',
+        redirectTo: 'not-found',
         pathMatch: 'full',
     },
 ];
