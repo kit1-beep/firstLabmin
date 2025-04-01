@@ -7,13 +7,18 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { FormsModule } from '@angular/forms';
+import { BurgerMenuComponent } from '../burger-menu/burger-menu.component';
 
 @Component({
   selector: 'app-layout',
-  imports: [RouterOutlet,MenubarModule,ButtonModule,CommonModule,ToggleSwitchModule,FormsModule ],
+  imports: [RouterOutlet,MenubarModule,ButtonModule,CommonModule,ToggleSwitchModule,FormsModule,BurgerMenuComponent ],
   template: `
-   <p-menubar [model]="items" >
-   <ng-template #end>
+  
+   <p-menubar  >
+   <ng-template #start>
+     <app-burger-menu></app-burger-menu>
+     </ng-template>
+     <ng-template #end>
     <div class="flex items-center gap-2">
     <p-toggleswitch [(ngModel)]="checked" trueValue="yes" falseValue="no" (onChange)="toggleDarkMode()"/>
       
