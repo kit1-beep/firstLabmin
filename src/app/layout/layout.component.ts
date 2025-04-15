@@ -7,25 +7,25 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { FormsModule } from '@angular/forms';
-import { BurgerMenuComponent } from '../burger-menu/burger-menu.component';
+import { SideMenuComponent } from '../side-menu/side-menu.component';
 
 @Component({
   selector: 'app-layout',
-  imports: [RouterOutlet,MenubarModule,ButtonModule,CommonModule,ToggleSwitchModule,FormsModule,BurgerMenuComponent ],
+  imports: [RouterOutlet,MenubarModule,ButtonModule,CommonModule,ToggleSwitchModule,FormsModule,SideMenuComponent ],
   template: `
   
    <p-menubar  >
    <ng-template #start>
-     <app-burger-menu></app-burger-menu>
      </ng-template>
      <ng-template #end>
-    <div class="flex items-center gap-2">
-    <p-toggleswitch [(ngModel)]="checked" trueValue="yes" falseValue="no" (onChange)="toggleDarkMode()"/>
-      
-    </div>
-   </ng-template>
-   </p-menubar>
-   
+       <div class="flex items-center gap-2">
+         <p-toggleswitch [(ngModel)]="checked" trueValue="yes" falseValue="no" (onChange)="toggleDarkMode()"/>
+         
+        </div>
+      </ng-template>
+    </p-menubar>
+    <app-side-menu></app-side-menu>
+  
     <router-outlet></router-outlet>
   `,
   styles: ``
@@ -40,6 +40,8 @@ export class LayoutComponent {
   }
 
   ngOnInit(){
+
+    this.toggleDarkMode();
       this.items = [{
         label: 'Home',
         icon: 'pi pi-home',
