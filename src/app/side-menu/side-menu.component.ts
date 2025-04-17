@@ -45,6 +45,13 @@ export class SideMenuComponent {
         this.router.navigate(['/about-us']);
     }
       
+  },
+  {
+    label: 'login',
+    icon: 'pi pi-star',
+      command: () => {
+        this.router.navigate(['/login']);
+    }
   }]; 
 
 }
