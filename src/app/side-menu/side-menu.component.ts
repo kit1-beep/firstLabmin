@@ -6,14 +6,30 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-side-menu',
-  imports: [MegaMenu,RouterOutlet],
+  imports: [MegaMenu],
   template: `
     <div class="card">
-    <p-megamenu [model]="items" orientation="vertical" />
-</div>
-<router-outlet></router-outlet>
+    <p-megaMenu [model]="items" orientation="vertical" styleClass="full-height-menu" />
+    </div>
+   
+    
   `,
-  styles: ``
+  styles: `
+  .sidebar {
+    height: 100%;
+    width: 100%;
+  }
+  
+  :host ::ng-deep .full-height-menu {
+    height: 100%;
+    width: 100%;
+  }
+  
+  :host ::ng-deep .p-megamenu.p-megamenu-vertical {
+    width: 100%;
+    height: 100%;
+  }
+`
 })
 export class SideMenuComponent {
 
